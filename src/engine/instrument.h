@@ -640,6 +640,7 @@ enum DivWaveSynthEffects {
   DIV_WS_AVERAGE,
   DIV_WS_PHASE,
   DIV_WS_CHORUS,
+  DIV_WS_NOISE,
 
   DIV_WS_SINGLE_MAX,
   
@@ -654,7 +655,7 @@ enum DivWaveSynthEffects {
   DIV_WS_MIX,
   DIV_WS_PHASE_MOD,
 
-  DIV_WS_DUAL_MAX
+  DIV_WS_DUAL_MAX,
 };
 
 struct DivInstrumentWaveSynth {

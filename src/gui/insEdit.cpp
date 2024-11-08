@@ -627,14 +627,15 @@ const int orderedOps[4]={
   0, 2, 1, 3
 };
 
-const char* singleWSEffects[7]={
+const char* singleWSEffects[8]={
   _N("None"),
   _N("Invert"),
   _N("Add"),
   _N("Subtract"),
   _N("Average"),
   _N("Phase"),
-  _N("Chorus")
+  _N("Chorus"),
+  _N("Noise")
 };
 
 const char* dualWSEffects[9]={

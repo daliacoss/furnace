@@ -115,6 +115,26 @@ bool DivWaveSynth::tick(bool skipSubDiv) {
         }
         updated=true;
         break;
+      case DIV_WS_NOISE:
+        // 16-bit galois lfsr
+        for (int i=0; i<=state.speed; i++) {
+          // 0 is invalid state for the shift register
+          if (!stage) stage++;
+          output[pos] = 0;
+          for (int h=height, lsb=0; h>0; h>>=1){
+            output[pos] <<= 1;
+            lsb = stage & 1u;
+            stage >>= 1;
+            if (lsb){
+              output[pos]++;
+              stage ^= 0xB400;
+            }
+          }
+          // logD("%2d: register is 0x%2X (%3d), new output is 0x%02X (%3d)", pos, reg, reg, output[pos], output[pos]);
+          if (++pos>=width) pos=0;
+        }
+        updated=true;
+        break;
       case DIV_WS_WIPE:
         for (int i=0; i<=state.speed; i++) {
           output[pos]=(stage&1)?wave1[pos]:wave2[pos];
